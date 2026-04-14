@@ -49,7 +49,11 @@ class CashbackService:
         """
         Converte centavos para string formatada. Ex: R$ 100,00
         """
-        reais = cents // 100
-        centavos = cents % 100
         
-        return f"R$ {reais},{centavos:02d}"
+        sinal = "-" if cents < 0 else ""
+        abs_cents = abs(cents)
+        reais = abs_cents // 100
+        centavos = abs_cents % 100
+        
+        reais_fmt = f"{reais:,}".replace(",", ".")
+        return f"{sinal}R$ {reais_fmt},{centavos:02d}"
