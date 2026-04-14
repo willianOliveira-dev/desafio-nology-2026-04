@@ -21,7 +21,7 @@ class CashbackRepository:
        self.db.refresh(cashback)
        return cashback
     
-    def find_by_ip(self, ip_address: str) -> List[Cashback]:
+    def get_history_by_ip(self, ip_address: str) -> List[Cashback]:
         """
         Busca todo o histórico de consultas por endereço IP.
        """
