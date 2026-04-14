@@ -8,8 +8,8 @@ class CashbackRepository:
     Repositório para operações de banco relacionadas ao Cashback.
     """
     
-    def __init__(self, session: Session) -> None:
-        self.db = session
+    def __init__(self, db_session: Session) -> None:
+        self.db = db_session
         
     
     def create(self, cashback: Cashback) -> Cashback:
