@@ -1,29 +1,35 @@
+# Stage 1: Build do frontend
 FROM node:20-alpine AS frontend-builder
 
 WORKDIR /app/web
 
 COPY web/package*.json ./
-RUN npm ci
+
+RUN npm install 
 
 COPY web/ .
+
 RUN npm run build
 
-FROM python:3.14-slim
+FROM python:3.14-rc-slim
 
 WORKDIR /app
 
 RUN pip install --no-cache-dir uv
 
+COPY api/.python-version ./.python-version
+
 COPY api/pyproject.toml api/uv.lock ./
 
-RUN uv sync --frozen
+RUN uv sync --frozen --python 3.12
 
 COPY api/src ./src
 
-# OBS: Copia o frontend compilado do Stage 1 para dentro da pasta da API
-# O FastAPI vai servir estes arquivos como estáticos
-COPY --from=frontend-builder /app/web/dist ./src/static
+# OBS: Copia frontend buildado do Stage 1
+COPY --from=frontend-builder /app/web/dist ./src/web/dist
+
+ENV PYTHONPATH=/app/src
 
 EXPOSE 8000
 
-CMD ["uv", "run", "uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["/app/.venv/bin/uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

@@ -1,6 +1,8 @@
+from typing import Generator
+
 from sqlmodel import Session, SQLModel, create_engine
 
-from src.core.config.env import env
+from core.config.env import env
 
 engine = create_engine(
     env.DATABASE_URL,
@@ -10,13 +12,15 @@ engine = create_engine(
     max_overflow=20,
 )
 
+
 def create_db_and_tables() -> None:
     """
     Cria todas as tabelas mapeadas pelo SQLModel
     """
     SQLModel.metadata.create_all(engine)
 
-def get_session() -> None:
+
+def get_session() -> Generator[Session, None, None]:
     """
     Dependência do FastAPI para injetar uma sessão de banco.
     """
