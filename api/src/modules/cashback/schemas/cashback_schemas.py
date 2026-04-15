@@ -16,8 +16,9 @@ class CashbackRequest(BaseModel):
     )
     purchase_value: float = Field(
         ..., 
-        gt=0, 
-        description="Valor da compra em Reais (ex: 600.50)"
+        gt=0,
+        le=10000000,
+        description="Valor da compra em Reais (ex: 600.50). Máximo: R$ 10.000.000,00"
     )
     discount_percent: int = Field(
         default=0, 
