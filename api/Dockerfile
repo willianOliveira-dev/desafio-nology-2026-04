@@ -21,7 +21,7 @@ COPY api/.python-version ./.python-version
 
 COPY api/pyproject.toml api/uv.lock ./
 
-RUN uv sync --frozen --python 3.12
+RUN uv sync --frozen
 
 COPY api/src ./src
 

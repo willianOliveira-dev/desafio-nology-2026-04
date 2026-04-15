@@ -31,7 +31,7 @@ class Cashback(SQLModel, table=True):
         ),
     )
 
-    ip_address: str = Field(index=True, sa_column=Column(String(255), nullable=False))
+    ip_address: str = Field(sa_column=Column(String(255), nullable=False, index=True))
 
     client_type: ClientType = Field(sa_column=Column(String(15), nullable=False))
 
