@@ -3,7 +3,7 @@ name = "api"
 version = "0.1.0"
 description = "Solução do desafio técnico Nology. Backend robusto estruturado com uv, FastAPI e banco de dados relacional (PostgreSQL) para gerenciamento de cálculos de cashback e registro de consultas."
 readme = "README.md"
-requires-python = ">=3.12,<3.13"
+requires-python = ">=3.14"
 dependencies = [
     "fastapi>=0.135.3",
     "psycopg2-binary>=2.9.11",
