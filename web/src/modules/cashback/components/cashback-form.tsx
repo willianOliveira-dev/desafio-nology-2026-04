@@ -190,7 +190,7 @@ export function CashbackForm({ onSuccess }: CashbackFormProps) {
 
                 <Button
                     type="submit"
-                    className="w-full h-14 text-lg font-semibold bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-all duration-200"
+                    className="w-full h-14 text-lg font-semibold bg-linear-to-r from-primary to-secondary hover:opacity-90 transition-all duration-200"
                     disabled={mutation.isPending}
                 >
                     {mutation.isPending ? (

@@ -54,7 +54,7 @@ export function CashbackResult({ data }: CashbackResultProps) {
                     <p className="text-lg font-medium">{data.final_value}</p>
                 </div>
 
-                <div className="p-6 rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 border border-primary/20">
+                <div className="p-6 rounded-xl bg-linear-to-br from-primary/10 to-secondary/10 border border-primary/20">
                     <div className="flex items-center gap-2 mb-2">
                         <TrendingUp className="w-5 h-5 text-primary" />
                         <p className="text-sm font-medium text-muted-foreground">
