@@ -2,8 +2,10 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
 
 from core.db.database import create_db_and_tables
+from modules.cashback import cashback_router
 
 
 @asynccontextmanager
@@ -18,10 +20,22 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(
     title="Nology Cashback API",
-    description="API para cálculo de cashback",
+    description="API para cálculo de cashback com histórico por IP",
     version="1.0.0",
     lifespan=lifespan,
 )
+
+# CORS para permitir requisições do frontend
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Em produção, especificar domínios permitidos
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Registra as rotas do módulo cashback
+app.include_router(cashback_router)
 
 
 @app.get("/api/health")
