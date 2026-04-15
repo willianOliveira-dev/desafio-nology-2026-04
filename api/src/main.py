@@ -25,16 +25,14 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# CORS para permitir requisições do frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Em produção, especificar domínios permitidos
+    allow_origins=["*"], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Registra as rotas do módulo cashback
 app.include_router(cashback_router)
 
 
@@ -46,10 +44,10 @@ async def health_check():
     return {"status": "ok", "message": "API is running"}
 
 
-# Monta os arquivos estáticos do frontend na raiz
-# Deve ser a última configuração para não sobrescrever as rotas da API
+# TODO Monta os arquivos estáticos do frontend na raiz
+# TODO Deve ser a última configuração para não sobrescrever as rotas da API
 try:
     app.mount("/", StaticFiles(directory="src/web/dist", html=True), name="static")
 except RuntimeError:
-    # Em desenvolvimento, o diretório pode não existir ainda
+    # TODO Em desenvolvimento, o diretório pode não existir ainda
     pass
