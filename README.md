@@ -13,6 +13,10 @@
 
 ---
 
+> **Observação sobre acesso em produção**: A aplicação está hospedada no Render utilizando o plano gratuito. O serviço entra em modo de hibernação após períodos de inatividade. Ao acessar pela primeira vez ou após um período sem uso, pode levar de 30 a 60 segundos para o servidor inicializar. Aguarde o carregamento completo da página.
+
+---
+
 ## Sobre o Projeto
 
 O **Nology Cashback** é um sistema completo de cálculo e gerenciamento de cashback desenvolvido como desafio técnico para a empresa Nology. O projeto demonstra a implementação de uma arquitetura monorepo moderna, combinando uma API robusta em Python com um frontend interativo em React.
