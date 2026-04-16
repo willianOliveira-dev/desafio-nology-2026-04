@@ -1,9 +1,8 @@
-import "dotenv/config"
 import { defineConfig } from 'orval';
 
 export default defineConfig({
     cashback: {
-        input: `${process.env.VITE_PUBLIC_API_URL}/openapi.json`,
+        input: `http://localhost:8000/openapi.json`,
         output: {
             mode: 'tags-split',
             target: 'src/api/generated/cashback.ts',

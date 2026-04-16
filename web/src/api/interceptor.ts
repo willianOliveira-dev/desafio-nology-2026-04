@@ -1,8 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { envWeb } from '@/config/env-web';
 
 export const axiosInstance = axios.create({
-    baseURL: envWeb.VITE_PUBLIC_API_URL,
+    baseURL: '',
     headers: {
         'Content-Type': 'application/json',
     },
