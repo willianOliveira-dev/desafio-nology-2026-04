@@ -11,6 +11,7 @@ COPY web/ .
 
 RUN npm run build
 
+# Stage 2: Backend
 FROM python:3.14-rc-slim
 
 WORKDIR /app

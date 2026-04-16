@@ -29,12 +29,13 @@ services:
             DATABASE_URL: ${DATABASE_URL}
             PYTHON_ENV: ${PYTHON_ENV:-development}
             DEBUG: ${DEBUG:-true}
-            PYTHONPATH: /app/src 
+            PYTHONPATH: /app/src
         depends_on:
             db:
                 condition: service_healthy
         volumes:
             - ./api/src:/app/src
+            - /app/src/web/dist
         networks:
             - app_network
 
