@@ -28,7 +28,7 @@ services:
         environment:
             DATABASE_URL: ${DATABASE_URL}
             PYTHON_ENV: ${PYTHON_ENV:-development}
-            DEBUG: ${DEBUG:-true}
+            DEBUG: ${DEBUG:-True}
             PYTHONPATH: /app/src
         depends_on:
             db:
